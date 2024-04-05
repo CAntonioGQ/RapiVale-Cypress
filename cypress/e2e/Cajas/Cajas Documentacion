@@ -1,0 +1,358 @@
+# Documentación Cajas
+
+## Smoke Test: Verificación de la Funcionalidad Básica de la pantalla Cajas/Entradas y Salidas
+
+### Objetivo: 
+Este "Smoke Test" verifica la funcionalidad básica dentro de Cajas/Entradas y Salidas en la WebApp.
+
+### Descripción Breve:
+Este caso de prueba garantiza que los usuarios puedan acceder y ver correctamente la información en la pantalla de Cajas/Entradas y Salidas, lo que es esencial para el funcionamiento adecuado de la aplicación.
+
+### Pasos a Seguir:
+1. Abrir la WebApp en el navegador estando previamente logeado.
+2. En el Side-Menu, dar click en el botón "Cajas".
+3. Dentro de la vista de Cajas, dar click en el botón "Entradas y Salidas".
+
+### Detalles de los Datos de Prueba:
+- Se espera encontrar una tabla con información detallada sobre las Entradas/Salidas.
+- El título de la página debería ser "LISTADO DE ENTRADAS/SALIDAS".
+- Deberían estar presentes los botones de "Exportar Excel" y "Nueva Entrada/Salida".
+
+### Resultado Esperado:
+- Se espera que el usuario pueda fácilmente ver la información anteriormente solicitada.
+- Si el caso de prueba falla, se deben investigar posibles problemas.
+
+### Notas Adicionales:
+- Este "Smoke Test" es una verificación inicial para garantizar que la funcionalidad básica de la pantalla de Cajas/Entradas y Salidas funcione correctamente.
+- El bloque de código de prueba proporcionado es un ejemplo de implementación en Cypress para este caso de prueba específico. Recuerda ajustarlo según sea necesario para adaptarlo a la estructura y comportamiento de tu aplicación.
+
+
+## Codigo de Prueba:
+``` 
+it('SMOKE Test Cajas/Entradas y Salidas', () => {
+    cy.get(':nth-child(6) > [data-bs-toggle="collapse"]').click()
+    cy.get('#parent_49 > :nth-child(1)').click()
+    cy.get('#accordion > :nth-child(2) > .card-body').should("be.visible")
+    cy.get('.header-title > a.btn').should("be.visible")
+    cy.get('.header-title > button.btn').should("be.visible")
+    cy.get('.page-title-box').should("be.visible")
+});
+```
+---------------------------------------------------------------------------------------------------------------
+
+## Caso de Prueba Agregar Una Nueva Caja en Cajas/Entradas y Salidas
+
+### Objetivo
+Este caso de prueba verifica que puedas agregar una nueva Entrada o Salida dentro de Cajas/Entradas y Salidas.
+
+### Descripción Breve
+Se asegura que el proceso de agregar una nueva Entrada o Salida en la pantalla de Cajas/Entradas y Salidas funcione correctamente.
+
+### Pasos a Seguir:
+1. Abrir la WebApp en el navegador estando previamente logeado.
+2. En el Side-Menu, dar click en el botón "Cajas".
+3. Dentro de la vista de Cajas, dar click en el botón "Entradas y Salidas".
+4. Dentro de la vista "Entradas y Salidas", dar click en el botón "Nueva Entrada/Salida".
+5. Llenar correctamente el campo Sucursal.
+6. Llenar correctamente el campo Caja.
+7. Llenar correctamente el campo Tipo.
+8. Llenar correctamente el campo Cuenta.
+9. Llenar correctamente el campo SubCuenta.
+10. Llenar correctamente el campo Monto.
+11. Llenar correctamente el campo Nota.
+12. Dar click en el botón "Guardar".
+13. Dar click en el botón "OK".
+
+### Detalles de los Datos de Prueba:
+Los detalles específicos de los datos de prueba pueden variar dependiendo de los requisitos y del entorno de la aplicación.
+
+### Resultado Esperado:
+Se espera que al seguir los pasos mencionados anteriormente, el usuario pueda agregar una nueva Entrada o Salida de manera exitosa.
+
+### Notas Adicionales:
+- Es importante validar cada campo antes de guardar la nueva Entrada o Salida.
+- Se debe prestar especial atención a cualquier mensaje de error que pueda aparecer durante el proceso de llenado de los campos.
+- Este caso de prueba garantiza la funcionalidad básica de agregar una nueva Entrada o Salida, lo que es crucial para el correcto funcionamiento de la aplicación.
+
+```
+it('Caso de Prueba Agregar Una Nueva Caja en Cajas/Entradas y Salidas', () => {
+    cy.get(':nth-child(6) > [data-bs-toggle="collapse"]').click()
+    cy.get('#parent_49 > :nth-child(1)').click()
+    cy.get('.header-title > a.btn').click()
+    cy.get(':nth-child(1) > .col-8 > .form-control').select("Mazatlan")
+    cy.get(':nth-child(2) > .col-8 > .form-control').select("Caja Mazatlan")
+    //cy.get('#swal2-content').contains("Esta Caja Llegó al Mínimo de Saldo.")
+    //cy.get('.swal2-confirm').click() 
+    cy.get(':nth-child(3) > .col-8 > .form-control').select("Salida")
+    cy.get(':nth-child(4) > .col-8 > .form-control').select("Cuenta")
+    cy.get(':nth-child(5) > .col-8 > .form-control').select("SubCuenta")
+    cy.get(':nth-child(6) > .col-8 > .form-control').type("9999")
+    cy.get(':nth-child(7) > .col-8 > .form-control').type("LOREMIPSUM")
+    cy.get('.btn-primary').click()
+    cy.get('#swal2-content').contains("Entrada/Salida guardada exitosamente")
+    cy.get('.swal2-confirm').click()
+});
+```
+
+------------------------------------------------------------------------------------------------------------------
+
+## Caso de Prueba Funcionalidad Botón Exportar Excel en Cajas/Entradas y Salidas
+
+### Objetivo
+Este caso de prueba verifica que la funcionalidad del botón "Exportar Excel" en la pantalla de Cajas/Entradas y Salidas funcione correctamente.
+
+### Descripción Breve
+Se asegura que al hacer clic en el botón "Exportar Excel", se genere correctamente un archivo Excel con los datos de las entradas y salidas de caja.
+
+### Pasos a Seguir:
+1. Abrir la WebApp en el navegador estando previamente logeado.
+2. En el Side-Menu, dar click en el botón "Cajas".
+3. Dentro de la vista de Cajas, dar click en el botón "Entradas y Salidas".
+4. Verificar la presencia del botón "Exportar Excel".
+5. Dar clic en el botón "Exportar Excel".
+
+### Datos de Prueba:
+- Se espera que el botón "Exportar Excel" esté presente en la pantalla de Cajas/Entradas y Salidas.
+
+### Resultado Esperado:
+Se espera que al seguir los pasos mencionados anteriormente, se genere correctamente un archivo Excel con los datos de las entradas y salidas de caja.
+
+### Notas Adicionales:
+- Se debe verificar que el archivo Excel generado contenga la información correcta y esté formateado adecuadamente.
+- Este caso de prueba garantiza la funcionalidad del botón "Exportar Excel", lo que es importante para la generación de informes y el análisis de datos en la aplicación.
+
+## Codigo de Prueba:
+
+```
+it('Caso de Prueba para funcionamiento de botón Excel en Cajas/Entradas y Salaidas', () => {
+    cy.get(':nth-child(6) > [data-bs-toggle="collapse"]').click()
+    cy.get('#parent_49 > :nth-child(1)').click()
+    cy.get('.header-title > button.btn').click()
+});
+```
+------------------------------------------------------------------------------------------------------------------
+
+## Smoke Test: Verificación de la Funcionalidad Básica de la pantalla Cajas/Transferencia
+
+## Objetivo: 
+Este "Smoke Test" verifica la funcionalidad básica dentro de Cajas/Transferencia en la WebApp.
+
+### Descripción Breve:
+Este caso de prueba garantiza que los usuarios puedan acceder y ver correctamente la información en la pantalla de Cajas/Transferencia, lo que es esencial para el funcionamiento adecuado de la aplicación.
+
+### Pasos a Seguir:
+1. Abrir la WebApp en el navegador estando previamente logeado.
+2. En el Side-Menu, dar click en el botón "Cajas".
+3. Dentro de la vista de Cajas, dar click en el botón "Transferencias".
+
+### Detalles de los Datos de Prueba:
+- Se espera encontrar una tabla con información detallada sobre las Transferencias.
+- El título de la página debería ser "LISTADO DE TRANSFERENCIAS".
+- Deberían estar presentes los botones de "Nueva Transferencia Entre Marcas" y "Nueva Transferencia".
+
+### Resultado Esperado:
+- Se espera que el usuario pueda fácilmente ver la información anteriormente solicitada.
+- Si el caso de prueba falla, se deben investigar posibles problemas.
+
+### Notas Adicionales:
+- Este "Smoke Test" es una verificación inicial para garantizar que la funcionalidad básica de la pantalla de Cajas/Transferencia funcione correctamente.
+- El bloque de código de prueba proporcionado es un ejemplo de implementación en Cypress para este caso de prueba específico. Recuerda ajustarlo según sea necesario para adaptarlo a la estructura y comportamiento de tu aplicación.
+
+## Codigo de Prueba:
+
+```
+it('SMOKE TEST Cajas/Transferencias', () => {
+    cy.get(':nth-child(6) > [data-bs-toggle="collapse"]').click()
+    cy.get('#parent_49 > :nth-child(2)').click()
+    cy.get('#accordion > :nth-child(2) > .card-body').should("be.visible")
+    cy.get('.page-title-box').should("be.visible")
+    cy.get('.header-title > .btn').should("be.visible")
+});
+```
+------------------------------------------------------------------------------------------------------------------
+
+## Caso de Prueba: Hacer una nueva transferencia en Cajas/Transferencias
+
+### Objetivo
+Este caso de prueba verifica que los usuarios puedan realizar una nueva transferencia en la pantalla de Cajas/Transferencias en la WebApp.
+
+### Descripción Breve
+Se asegura que el proceso de realizar una nueva transferencia funcione correctamente, lo que es esencial para la gestión adecuada de las transacciones en la aplicación.
+
+### Pasos a Seguir:
+1. Abrir la WebApp en el navegador estando previamente logeado.
+2. En el Side-Menu, dar click en el botón "Cajas".
+3. Dentro de la vista de Cajas, dar click en el botón "Transferencias".
+4. Dentro de la vista de Transferencias, dar click en el botón "Nueva Transferencia".
+5. Llenar correctamente el campo Sucursal Origen.
+6. Llenar correctamente el campo Caja Origen.
+7. Llenar correctamente el campo Monto.
+8. Llenar correctamente el campo Nota.
+9. Llenar correctamente el campo Sucursal Destino.
+10. Llenar correctamente el campo Caja Destino.
+11. Llenar correctamente el campo Tipo.
+12. Dar click en el botón "Guardar".
+13. Dar click en el botón "OK".
+
+
+### Detalles de los Datos de Prueba
+Los detalles específicos de los datos de prueba pueden variar dependiendo de los requisitos y del entorno de la aplicación.
+
+### Resultado Esperado
+Se espera que al seguir los pasos mencionados anteriormente, los usuarios puedan realizar una nueva transferencia de manera exitosa y que esta se refleje correctamente en la lista de transferencias.
+
+### Notas Adicionales
+- Se debe prestar especial atención al proceso de llenado de los campos y a cualquier mensaje de confirmación o error que pueda aparecer durante el proceso.
+- Este caso de prueba garantiza la funcionalidad de hacer una nueva transferencia en Cajas/Transferencias, lo que es crucial para la gestión financiera en la aplicación.
+
+## Codigo de Prueba:
+
+```
+it('CASO DE PRUEBA GUARDAR TRANSFERENCIA EN CAJAS/TRANSFERENCIAS', () => {
+    cy.get(':nth-child(6) > [data-bs-toggle="collapse"]').click()
+    cy.get('#parent_49 > :nth-child(2)').click()
+    cy.get('[routerlink="create"]').click()
+    cy.get(':nth-child(1) > :nth-child(1) > .col-8 > .form-control').wait(2000).select("Mazatlan")
+    cy.get(':nth-child(1) > :nth-child(2) > .col-8 > .form-control').select("Caja Mazatlan")
+    cy.get(':nth-child(1) > :nth-child(3) > .col-8 > .form-control').type("9999").type("{enter}")
+    cy.get(':nth-child(4) > .col-8 > .form-control').type("NOTATESTNOTATESTNOTATESTNOTATESTNOTATEST")
+    cy.get(':nth-child(2) > :nth-child(1) > .col-8 > .form-control').select("Cd Victoria")
+    cy.get(':nth-child(2) > :nth-child(2) > .col-8 > .form-control').select("Caja Cd Victoria")
+    cy.get(':nth-child(2) > :nth-child(3) > .col-8 > .form-control').select("Transferencia")
+    cy.get('.btn-primary').click()
+    cy.get('.swal2-confirm').click() 
+});
+```
+
+------------------------------------------------------------------------------------------------------------------
+
+## CASO DE PRUEBA PARA AGREGAR UNA NUEVA TRANSFERENCIA ENTRE MARCAS EN Cajas/Transferencias
+
+### Objetivo
+Este caso de prueba verifica que los usuarios puedan realizar una nueva transferencia entre marcas en la pantalla de Cajas/Transferencias en la WebApp.
+
+### Descripción Breve
+Se asegura que el proceso de realizar una nueva transferencia entre marcas funcione correctamente, lo que es esencial para la gestión adecuada de las transacciones en la aplicación.
+
+### Pasos a Seguir:
+1. Abrir la WebApp en el navegador estando previamente logeado.
+2. En el Side-Menu, dar click en el botón "Cajas".
+3. Dentro de la vista de Cajas, dar click en el botón "Transferencias".
+4. Dentro de la vista de Transferencias, dar click en el botón "Nueva Transferencia Entre Marcas".
+5. Llenar correctamente el campo Tipo de Transferencia.
+6. Llenar correctamente el campo Sucursal de Origen.
+7. Llenar correctamente el campo Caja Origen.
+8. Llenar correctamente el campo Monto.
+9. Llenar correctamente el campo Nota.
+12. Dar click en el botón "Guardar".
+13. Dar click en el botón "OK".
+
+
+### Detalles de los Datos de Prueba
+Los detalles específicos de los datos de prueba pueden variar dependiendo de los requisitos y del entorno de la aplicación.
+
+### Resultado Esperado
+Se espera que al seguir los pasos mencionados anteriormente, los usuarios puedan realizar una nueva transferencia entre marcas de manera exitosa y que esta se refleje correctamente en la lista de transferencias.
+
+### Notas Adicionales
+- Se debe prestar especial atención al proceso de llenado de los campos y a cualquier mensaje de confirmación o error que pueda aparecer durante el proceso.
+- Este caso de prueba garantiza la funcionalidad de hacer una nueva transferencia entre marcas en Cajas/Transferencias, lo que es crucial para la gestión financiera en la aplicación.
+
+## Codigo de Prueba:
+
+```
+it('CASO DE PRUEBA GUARDAR TRANSFERENCIA ENTRE MARCAS EN CAJAS/TRANSFERENCIAS', () => {
+    cy.get(':nth-child(6) > [data-bs-toggle="collapse"]').click()
+    cy.get('#parent_49 > :nth-child(2)').click()
+    cy.get('[routerlink="create/brand-transfer"]').click()
+    cy.get('.col-8 > .form-control').select("Hacia una Marca (Hacia Otra Sucursal).")
+    cy.get(':nth-child(2) > :nth-child(1) > .col-8 > .form-control').wait(2000).select("Mazatlan")
+    cy.get(':nth-child(2) > .col-8 > .form-control').select("Caja Mazatlan")
+    cy.get(':nth-child(3) > .col-8 > .form-control').type("12345")
+    cy.get(':nth-child(4) > .col-8 > .form-control').click("NOTATESTNOTATEST")
+    cy.get('.btn-primary').click()
+    cy.get('.swal2-confirm').click() 
+});
+```
+------------------------------------------------------------------------------------------------------------------
+
+## CASO DE PRUEBA SMOKE TEST Cajas/Corte de Caja
+
+## Objetivo: 
+Este "Smoke Test" verifica la funcionalidad básica dentro de Cajas/Cortes de Caja en la WebApp.
+
+### Descripción Breve:
+Este caso de prueba garantiza que los usuarios puedan acceder y ver correctamente la información en la pantalla de Cajas/Cortes de Caja, lo que es esencial para el funcionamiento adecuado de la aplicación.
+
+### Pasos a Seguir:
+1. Abrir la WebApp en el navegador estando previamente logeado.
+2. En el Side-Menu, dar click en el botón "Cajas".
+3. Dentro de la vista de Cajas, dar click en el botón "Cortes de Caja".
+
+### Detalles de los Datos de Prueba:
+- Se espera encontrar una tabla con información detallada sobre las Transferencias.
+- El título de la página debería ser "LISTADO DE CORTES DE CAJA".
+- Deberían estar presentes los botones de "Nuevo Corte de Caja"
+
+### Resultado Esperado:
+- Se espera que el usuario pueda fácilmente ver la información anteriormente solicitada.
+- Si el caso de prueba falla, se deben investigar posibles problemas.
+
+### Notas Adicionales:
+- Este "Smoke Test" es una verificación inicial para garantizar que la funcionalidad básica de la pantalla de Cajas/Corte de Caja funcione correctamente.
+- El bloque de código de prueba proporcionado es un ejemplo de implementación en Cypress para este caso de prueba específico. Recuerda ajustarlo según sea necesario para adaptarlo a la estructura y comportamiento de tu aplicación.
+
+## Codigo de Prueba:
+
+```
+it('SMOKE TEST Cajas/Corte de Caja', () => {
+    cy.get(':nth-child(6) > [data-bs-toggle="collapse"]').click()
+    cy.get('#parent_49 > :nth-child(3)').click().wait(2000)
+    cy.get('#accordion > :nth-child(2) > .card-body').should("be.visible")
+    cy.get('.page-title-box').should("be.visible")
+    cy.get('.header-title > .btn').should("be.visible")
+    cy.get('.header-title > .btn').should("be.visible")
+});
+```
+
+------------------------------------------------------------------------------------------------------------------
+
+## NUEVO CORTE DE CAJAS - Pendiente *Nueva Funcion* - 
+
+------------------------------------------------------------------------------------------------------------------
+
+## CASO DE PRUEBA SMOKE TEST Cajas/Listado de Cajas & Cajas/Cajas
+## Objetivo: 
+Este "Smoke Test" verifica la funcionalidad básica dentro de Cajas/Listado de Cajas en la WebApp.
+
+### Descripción Breve:
+Este caso de prueba garantiza que los usuarios puedan acceder y ver correctamente la información en la pantalla de Cajas/Listado de Cajas, lo que es esencial para el funcionamiento adecuado de la aplicación.
+
+### Pasos a Seguir:
+1. Abrir la WebApp en el navegador estando previamente logeado.
+2. En el Side-Menu, dar click en el botón "Cajas".
+3. Dentro de la vista de Cajas, dar click en el botón "Listado de Caja".
+
+### Detalles de los Datos de Prueba:
+- Se espera encontrar una tabla con información detallada sobre las Cajas.
+- El título de la página debería ser "LISTADO DE CAJAs".
+
+### Resultado Esperado:
+- Se espera que el usuario pueda fácilmente ver la información anteriormente solicitada.
+- Si el caso de prueba falla, se deben investigar posibles problemas.
+
+### Notas Adicionales:
+- Este "Smoke Test" es una verificación inicial para garantizar que la funcionalidad básica de la pantalla de Cajas/Listado de Cajas funcione correctamente.
+- El bloque de código de prueba proporcionado es un ejemplo de implementación en Cypress para este caso de prueba específico. Recuerda ajustarlo según sea necesario para adaptarlo a la estructura y comportamiento de tu aplicación.
+
+## Codigo de Prueba:
+
+```
+it('SMOKE TEST Cajas/Listado de Cajas', () => {
+    cy.get(':nth-child(6) > [data-bs-toggle="collapse"]').click()
+    cy.get('#parent_49 > :nth-child(4)').click()
+    cy.get('#accordion > :nth-child(2) > .card-body').should("be.visible")
+    cy.get('.page-title-box').should("be.visible")
+});
+```
+------------------------------------------------------------------------------------------------------------------

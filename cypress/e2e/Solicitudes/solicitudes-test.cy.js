@@ -32,7 +32,7 @@ describe("Test Funcionamiento Solicitudes", () =>{
           cy.get('thead > :nth-child(1)').should("be.visible")
         })
         
-        it.only("Caso de Prueba Nueva Solicitud/Solicitud",()=>{
+        it("Caso de Prueba Nueva Solicitud/Solicitud",()=>{
           cy.get(':nth-child(9) > [data-bs-toggle="collapse"]').click()
           cy.get('#parent_47 > :nth-child(5)').click().wait(2000)
           cy.get('.header-title > .btn').click()
@@ -41,7 +41,7 @@ describe("Test Funcionamiento Solicitudes", () =>{
           cy.get('.col-10 > .form-control').wait(10000).select("Tapachula")
           cy.get('.col-8 > .form-control').select("Tapachula A")
           cy.get('.ng-select-container').type("JUAN CARLOS").type("{enter}")
-          cy.get(':nth-child(1) > :nth-child(1) > :nth-child(3) > .col-md-6 > .input-group > .form-control').type("HEVA940129HDFRLL00")
+          cy.get(':nth-child(1) > :nth-child(1) > :nth-child(3) > .col-md-6 > .input-group > .form-control').type("GARA650317MDFRDL07")
           cy.get(':nth-child(1) > :nth-child(1) > :nth-child(3) > .col-md-6 > .input-group > .input-group-text').click()
           cy.get(':nth-child(1) > :nth-child(1) > :nth-child(5) > :nth-child(2) > :nth-child(2) > .form-control').select("Hombre")
           cy.get(':nth-child(1) > :nth-child(1) > :nth-child(5) > :nth-child(3) > div > .form-control').select("Soltero(a)")
@@ -82,7 +82,7 @@ describe("Test Funcionamiento Solicitudes", () =>{
 
           cy.get('app-endorsement-list > .row > :nth-child(2) > .btn').click()
           cy.get('.modal-body > :nth-child(1) > .col-md-6 > :nth-child(2) > .form-control').select("Conyugue")
-          cy.get('.modal-body > app-person-form > .container-fluid > :nth-child(1) > .col-lg-12 > .card > .card-body > .form-horizontal > :nth-child(1) > :nth-child(1) > :nth-child(3) > .col-md-6 > .input-group > .form-control').type("LECA530803HPLNRL04")
+          cy.get('.modal-body > app-person-form > .container-fluid > :nth-child(1) > .col-lg-12 > .card > .card-body > .form-horizontal > :nth-child(1) > :nth-child(1) > :nth-child(3) > .col-md-6 > .input-group > .form-control').type("AESA780826MDFRLL00")
           cy.get('.modal-body > app-person-form > .container-fluid > :nth-child(1) > .col-lg-12 > .card > .card-body > .form-horizontal > :nth-child(1) > :nth-child(1) > :nth-child(3) > .col-md-6 > .input-group > .input-group-text > .fas').click()
           cy.get('.modal-body > app-person-form > .container-fluid > :nth-child(1) > .col-lg-12 > .card > .card-body > .form-horizontal > :nth-child(1) > :nth-child(1) > :nth-child(5) > :nth-child(2) > :nth-child(2) > .form-control').select("Hombre")
           cy.get('.modal-body > app-person-form > .container-fluid > :nth-child(1) > .col-lg-12 > .card > .card-body > .form-horizontal > :nth-child(1) > :nth-child(1) > :nth-child(5) > :nth-child(3) > :nth-child(2) > .form-control').select("Soltero(a)")
@@ -168,7 +168,7 @@ describe("Test Funcionamiento Solicitudes", () =>{
           cy.get('app-application-process-list > :nth-child(2) > :nth-child(3) > .btn').click()
           cy.get('.modal-body > :nth-child(1) > :nth-child(1) > :nth-child(2) > .form-control').select("Investigación Domiciliaria")
           cy.get('.modal-body > :nth-child(1) > :nth-child(2) > div > .form-control').select("Solicitante")
-          cy.get('.modal-body > :nth-child(1) > :nth-child(3) > :nth-child(2) > .form-control').select("ALDO MAURICIO HERNANDEZ VILLAVICENCIO")
+          cy.get('.modal-body > :nth-child(1) > :nth-child(3) > :nth-child(2) > .form-control').select("ALMA LAURA GARCIA RODRIGUEZ")
           cy.get('.modal-body > :nth-child(2) > :nth-child(1) > :nth-child(2) > .form-control').select("CALLETEST 9999")
           cy.get('.modal-body > :nth-child(2) > :nth-child(2) > div > .form-control').select("Si")
           cy.get(':nth-child(1) > :nth-child(2) > .input-group > .form-control').type("NameTest")
@@ -298,8 +298,35 @@ describe("Test Funcionamiento Solicitudes", () =>{
           cy.get('#credit > [style="display: flex; flex-direction: row-reverse;"] > .btn-primary').click()
           cy.get('#credit > [style="display: flex; flex-direction: row-reverse;"] > .btn-primary').click()
         });
+
+        it.only('Caso de Prueba Requerimiento Motivos de Rechazo a Solicitudes de Afiliación para Pre Autorización RECHAZAR', ()=>{
+          cy.get(':nth-child(9) > [data-bs-toggle="collapse"]').click()
+          cy.get('#parent_47 > :nth-child(5)').click().wait(5000)
+          cy.get('[ng-reflect-ng-class=""]').click()
+          cy.get(':nth-child(1) > :nth-child(8) > .d-flex > .btn').click().wait(5000)
+          cy.get('#generalInformation > [style="display: flex; flex-direction: row-reverse;"] > .btn').click()
+          cy.get('#economicActivity > [style="display: flex; flex-direction: row-reverse;"] > .btn-primary').click()
+          cy.get('#endorsements > [style="display: flex; flex-direction: row-reverse;"] > .btn-primary').click()
+          cy.get('#beneficiaries > [style="display: flex; flex-direction: row-reverse;"] > .btn-primary').click()
+          cy.get('#references > [style="display: flex; flex-direction: row-reverse;"] > .btn-primary').click()
+          cy.get('#rivalries > [style="display: flex; flex-direction: row-reverse;"] > .btn-primary').click()
+          cy.get('app-application-process-list > :nth-child(2) > :nth-child(3) > .btn').click()
+          cy.get('.modal-body > :nth-child(1) > :nth-child(1) > div > .form-control').select("Investigación Domiciliaria")
+          cy.get('.modal-body > :nth-child(1) > :nth-child(2) > div > .form-control').select("Solicitante")
+          cy.get('.modal-body > :nth-child(1) > :nth-child(3) > div > .form-control').select("CELIA DOMINGUEZ RAMIREZ")
+          cy.get('.modal-body > :nth-child(2) > :nth-child(1) > div > .form-control').select("A LOPEZ MATEO 50 ")
+          cy.get('.modal-body > :nth-child(2) > :nth-child(2) > div > .form-control').select("Si")
+          cy.get(':nth-child(1) > :nth-child(2) > .input-group > .form-control').select("Si")
+          cy.get('.row.ng-invalid > :nth-child(2) > :nth-child(2) > .input-group > .form-control').type("12345")
+          cy.get(':nth-child(3) > :nth-child(2) > .input-group > .form-control').type("12345")
+          cy.get('.row.ng-invalid > :nth-child(4) > :nth-child(2) > .input-group > .form-control').type("12345")
+          cy.get(':nth-child(5) > :nth-child(2) > .input-group > .form-control').type("1234")
+          cy.get('.row.ng-invalid > :nth-child(6) > :nth-child(2) > .input-group > .form-control').type("12345")
+          cy.get('.modal-body > :nth-child(6) > :nth-child(2) > .input-group > .form-control').type("12345")
+        })
     })
 
+  
 /*    cy.get('app-application-files > .container-fluid > .row > .col-4 > .card-body > :nth-child(1) > .table > tbody > :nth-child(1) > :nth-child(2) > button.btn')
     cy.get('app-application-files > .container-fluid > .row > .col-4 > .card-body > :nth-child(1) > .table > tbody > :nth-child(2) > :nth-child(2) > button.btn')
     cy.get(':nth-child(1) > .table > tbody > :nth-child(3) > :nth-child(2) > button.btn')
